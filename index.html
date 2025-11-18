@@ -218,7 +218,9 @@
                 <h4>Request Your Invitation</h4>
                 <form name="join-request" method="POST" data-netlify="true">
                     <input type="hidden" name="form-name" value="join-request" />
-
+                  <p style="display: none;">
+        <label>Don’t fill this out if you’re human: <input name="bot-field" /></label>
+    </p>
                     <label for="name">Full name</label>
                     <input type="text" id="name" name="name" placeholder="Your name" required>
 
