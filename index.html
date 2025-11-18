@@ -6,7 +6,7 @@
     <title>Digital Jigawa - Empowering the Future</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
-    </head>
+</head>
 <body class="light">
     <header class="navbar">
         <div class="nav-container">
@@ -31,7 +31,7 @@
             </nav>
             
             <button id="dark-mode-toggle" class="mode-toggle">
-                </button>
+            </button>
         </div>
     </header>
 
@@ -65,10 +65,10 @@
 
             <div class="hero-visual">
                 <div class="visual-card-grid">
-                    <div class="visual-card">Next Bootcamp</div>
-                    <div class="visual-card">Upcoming Event</div>
-                    <div class="visual-card">Member Spotlight</div>
-                    <div class="visual-card">Volunteer</div>
+                    <a href="#programs" class="visual-card visual-button">Next Bootcamp</a>
+                    <a href="#events" class="visual-card visual-button">Upcoming Event</a>
+                    <a href="#testimonials" class="visual-card visual-button">Member Spotlight</a>
+                    <a href="#join" class="visual-card visual-button">Volunteer</a>
                 </div>
             </div>
         </section>
@@ -135,25 +135,7 @@
             <a href="/blog" class="link-secondary">View All Articles →</a>
 
             <div class="grid-3 news-grid">
-                <div class="article-card">
-                    <p class="article-date">NOV 15, 2025</p>
-                    <h4>Jigawa Governor Launches New Tech Innovation Fund</h4>
-                    <p class="excerpt">Exciting news! The State Government commits $5 million to support local tech startups, a huge win for the community.</p>
-                    <a href="#">Read Article →</a>
                 </div>
-                <div class="article-card">
-                    <p class="article-date">NOV 1, 2025</p>
-                    <h4>Top 5 Skills to Learn Before the New Year</h4>
-                    <p class="excerpt">Our experts weigh in on the most in-demand digital skills for 2026, focusing on AI tools and cloud security.</p>
-                    <a href="#">Read Article →</a>
-                </div>
-                <div class="article-card">
-                    <p class="article-date">OCT 25, 2025</p>
-                    <h4>How Digital Jigawa is Closing the Tech Gap</h4>
-                    <p class="excerpt">A deep dive into our school outreach program and partnerships with local community centers to expand access.</p>
-                    <a href="#">Read Article →</a>
-                </div>
-            </div>
         </section>
 
         <div class="divider"></div>
@@ -234,15 +216,17 @@
 
             <div class="join-form-container">
                 <h4>Request Your Invitation</h4>
-                <form>
+                <form name="join-request" method="POST" data-netlify="true">
+                    <input type="hidden" name="form-name" value="join-request" />
+
                     <label for="name">Full name</label>
-                    <input type="text" id="name" placeholder="Your name" required>
+                    <input type="text" id="name" name="name" placeholder="Your name" required>
 
                     <label for="contact">Email or Phone</label>
-                    <input type="text" id="contact" placeholder="Email or phone" required>
+                    <input type="text" id="contact" name="contact" placeholder="Email or phone" required>
 
                     <label for="interest">Area of Interest</label>
-                    <select id="interest">
+                    <select id="interest" name="interest">
                         <option disabled selected>Select an area</option>
                         <option>Cybersecurity</option>
                         <option>Web Development</option>

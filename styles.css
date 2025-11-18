@@ -3,7 +3,7 @@
     /* Light Mode Colors */
     --clr-bg-primary-light: #ffffff;
     --clr-bg-card-light: #f9f9ff;
-    --clr-text-main-light: #1e293b;
+    --clr-text-main-light: #181f2b; /* Refined main text color */
     --clr-text-secondary-light: #475569;
     --clr-border-light: #e2e8f0;
     --clr-sky-500: #0ea5e9;
@@ -14,10 +14,10 @@
 
 .dark {
     /* Dark Mode Colors */
-    --clr-bg-primary-light: #0d1117; /* Very dark background */
-    --clr-bg-card-light: #161b22; /* Elevated card background */
+    --clr-bg-primary-light: #0d1117; 
+    --clr-bg-card-light: #161b22; 
     --clr-text-main-light: #e2e8f0;
-    --clr-text-secondary-light: #94a3b8;
+    --clr-text-secondary-light: #aebecd; /* Refined secondary text color */
     --clr-border-light: #334155;
     --clr-sky-500: #38bdf8;
     --clr-sky-600: #0ea5e9;
@@ -70,7 +70,7 @@ h1, h2, h3, h4 {
     top: 0;
     z-index: 100;
     backdrop-filter: blur(12px);
-    background-color: rgba(255, 255, 255, 0.7); /* Light Glassmorphism effect */
+    background-color: rgba(255, 255, 255, 0.7); 
     border-bottom: 1px solid var(--clr-border-light);
     transition: background-color 0.3s, border-color 0.3s;
 }
@@ -88,24 +88,7 @@ h1, h2, h3, h4 {
     justify-content: space-between;
     align-items: center;
 }
-/* --- Add this to styles.css --- */
 
-/* Ensures the logo image fills the circular container */
-.logo-icon .logo-image {
-    width: 100%;
-    height: 100%;
-    object-fit: cover; /* Ensures the image covers the area without distortion */
-    border-radius: 50%; /* If your image has padding, this rounds it */
-    padding: 2px; /* Small padding to keep the image centered if needed */
-}
-
-/* Optional: Remove the background color from .logo-icon since the image provides the design */
-/* Find the .logo-icon rule and modify or add this override */
-.logo-icon {
-    /* ... existing rules ... */
-    background-color: transparent; /* Changed from var(--clr-sky-600); */
-    box-shadow: none; /* Removed shadow from the circular background */
-}
 .logo {
     display: flex;
     align-items: center;
@@ -113,6 +96,8 @@ h1, h2, h3, h4 {
 }
 .logo h1 { font-size: 1.25rem; font-weight: 700; }
 .logo p { font-size: 0.75rem; color: var(--clr-text-secondary-light); margin-top: -0.25rem; }
+
+/* Logo Image Container (Cleaned up for image integration) */
 .logo-icon {
     width: 2.5rem;
     height: 2.5rem;
@@ -120,13 +105,21 @@ h1, h2, h3, h4 {
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: var(--clr-sky-600);
-    box-shadow: 0 4px 10px rgba(2, 132, 199, 0.5);
+    background-color: transparent; /* Changed from sky-600 */
+    box-shadow: none; /* Removed shadow */
 }
-.logo-icon svg path { stroke: white; }
+
+/* Logo Image Styling */
+.logo-icon .logo-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+    padding: 2px;
+}
 
 .nav-links {
-    display: none; /* Hidden on mobile */
+    display: none; 
     gap: 1.5rem;
     font-size: 0.875rem;
 }
@@ -166,11 +159,37 @@ h1, h2, h3, h4 {
     justify-content: center;
     align-items: center;
     font-size: 1.125rem;
+    position: relative; /* For glare effect */
+    overflow: hidden; /* For glare effect */
 }
+
+/* Glare Effect CSS */
+.btn-primary:hover::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: linear-gradient(
+        120deg,
+        rgba(255, 255, 255, 0) 30%,
+        rgba(255, 255, 255, 0.3) 60%,
+        rgba(255, 255, 255, 0) 80%
+    );
+    transform: translateX(100%);
+    transition: transform 0.6s ease-in-out;
+}
+.btn-primary:hover::after {
+    transform: translateX(100%);
+}
+
+
 .btn-primary {
     background-color: var(--clr-sky-600);
     color: white;
     box-shadow: 0 10px 20px rgba(2, 132, 199, 0.4);
+    z-index: 1;
 }
 .btn-primary:hover {
     background-color: var(--clr-sky-500);
@@ -211,7 +230,7 @@ h1, h2, h3, h4 {
 /* --- Layout Grids & Sections --- */
 .hero-section {
     display: flex;
-    flex-direction: column-reverse; /* Stack on mobile, text first */
+    flex-direction: column-reverse; 
     gap: 2.5rem;
     padding: 3rem 0;
 }
@@ -262,26 +281,79 @@ h1, h2, h3, h4 {
 .stat-value { font-size: 1.5rem; font-weight: 800; color: var(--clr-sky-600); }
 .stat-label { font-size: 0.75rem; color: var(--clr-text-secondary-light); }
 
+
+/* Hero Visual Banner Styles */
 .hero-visual {
-    /* Simple visual placeholder */
-    background: var(--clr-bg-card-light);
+    /* Background Image Setup */
+    background-image: url('digital_banner_bg.png'); /* REPLACE FILE NAME */
+    background-size: cover; 
+    background-position: center; 
+    background-repeat: no-repeat;
+    
+    position: relative; 
+    overflow: hidden;
+
+    /* Existing Styles */
     border: 1px solid var(--clr-border-light);
     padding: 1rem;
     border-radius: 1.5rem;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
 }
+
+/* Overlay for Readability */
+.hero-visual::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* 50% black opacity in light mode */
+    border-radius: 1.5rem;
+    z-index: 1; 
+}
+
+.dark .hero-visual::before {
+    background-color: rgba(0, 0, 0, 0.65); /* Slightly darker overlay in dark mode */
+}
+
+
 .visual-card-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 1rem;
+    position: relative;
+    z-index: 2; /* Ensures grid is above the overlay */
 }
+
+/* Visual Button Styles (Glassmorphism & Contrast) */
 .visual-card {
-    background-color: var(--clr-bg-primary-light);
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none; 
+    color: white !important; /* Forces white text for contrast on banner */
+    font-weight: 700;
+    
+    /* Elegant Glassmorphism */
+    background-color: rgba(255, 255, 255, 0.15); 
+    backdrop-filter: blur(5px); 
+    border: 1px solid rgba(255, 255, 255, 0.3); 
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); 
+
     padding: 1rem;
     border-radius: 0.5rem;
-    border: 1px solid var(--clr-border-light);
-    font-weight: 600;
+    transition: transform 0.2s, background-color 0.2s, color 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     font-size: 0.875rem;
+}
+
+.visual-card:hover {
+    background-color: var(--clr-sky-500);
+    color: white !important;
+    transform: translateY(-2px); 
+    border-color: var(--clr-sky-500);
 }
 
 /* General Layouts */
@@ -324,19 +396,27 @@ h1, h2, h3, h4 {
 }
 
 
-/* --- Program/Article/Event Cards --- */
+/* --- Program/Article/Event Cards (Refined Shadows/Hover) --- */
 .program-card, .article-card, .event-card {
     background-color: var(--clr-bg-card-light);
     border: 1px solid var(--clr-border-light);
     padding: 1.5rem;
     border-radius: 1rem;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
-    transition: all 0.3s ease-out;
+    
+    /* Elegant Shadows */
+    box-shadow: 
+        0 2px 4px rgba(0, 0, 0, 0.03), 
+        0 10px 20px rgba(0, 0, 0, 0.08); 
+    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
 }
 .program-card:hover, .article-card:hover, .event-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+    transform: translateY(-8px); /* Deeper lift */
+    border-color: var(--clr-sky-500); /* Highlight border on hover */
+    box-shadow: 
+        0 5px 10px rgba(0, 0, 0, 0.1), 
+        0 25px 40px rgba(0, 0, 0, 0.15); 
 }
+
 .program-card .icon { font-size: 2rem; display: block; margin-bottom: 0.75rem; }
 .program-card h4 { font-size: 1.25rem; margin-bottom: 0.5rem; }
 .program-card p { font-size: 0.875rem; min-height: 4.5rem; color: var(--clr-text-secondary-light); }
@@ -399,14 +479,23 @@ h1, h2, h3, h4 {
 .leader-item span { font-weight: 700; }
 .leader-item p { font-size: 0.75rem; color: var(--clr-text-secondary-light); }
 
-/* --- Testimonials --- */
+/* --- Testimonials (Refined Shadows/Hover) --- */
 .testimonial-card {
     background-color: var(--clr-bg-card-light);
     border: 1px solid var(--clr-border-light);
     padding: 1.5rem;
     border-radius: 1rem;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
-    transition: all 0.3s ease-out;
+    box-shadow: 
+        0 2px 4px rgba(0, 0, 0, 0.03), 
+        0 10px 20px rgba(0, 0, 0, 0.08);
+    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+.testimonial-card:hover {
+    transform: translateY(-8px);
+    border-color: var(--clr-sky-500);
+    box-shadow: 
+        0 5px 10px rgba(0, 0, 0, 0.1), 
+        0 25px 40px rgba(0, 0, 0, 0.15); 
 }
 .testimonial-card .quote {
     font-size: 1.125rem;

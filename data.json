@@ -1,0 +1,19 @@
+{
+    "articles": [
+        { 
+            "title": "Jigawa Governor Launches New Tech Innovation Fund", 
+            "excerpt": "Exciting news! The State Government commits $5 million to support local tech startups, a huge win for the community.", 
+            "date": "NOV 15, 2025" 
+        },
+        { 
+            "title": "Top 5 Skills to Learn Before the New Year", 
+            "excerpt": "Our experts weigh in on the most in-demand digital skills for 2026, focusing on AI tools and cloud security.", 
+            "date": "NOV 1, 2025" 
+        },
+        { 
+            "title": "How Digital Jigawa is Closing the Tech Gap in Rural Areas", 
+            "excerpt": "A deep dive into our school outreach program and partnerships with local community centers to expand access.", 
+            "date": "OCT 25, 2025" 
+        }
+    ]
+}
